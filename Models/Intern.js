@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
-var Institution = require('../Models/Institution');
-var Group = require('../Models/Group');
-
+var User = require('../Models/User')
 var InternSchema = mongoose.Schema({
     firstName: String,
+    middleName: String,
+    lastName: String,
     email: String,
     dob: Date,
     phone: Number,
     address: String,
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     groups: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Group' }],
-    institution: { type: mongoose.Types.Schema.ObjectId, ref: 'Institution' }
-
 });
-module.exports = mongoose.model('Intern', InternSchema);
+
+module.exports = mongoose.model('Intern', InternProfileSchema);
