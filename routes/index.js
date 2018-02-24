@@ -18,4 +18,5 @@ router.post('/activitycategory/create', activityCategoryController.addActivityCa
 
 router.get('/activitycategories', activityCategoryController.getActivityCategories);
 
+
 module.exports = router;
