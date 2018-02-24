@@ -1,5 +1,5 @@
 var repo = require('../Repositories/SampleRepository');
-var model = require('../Models/Sample');
+
 
 exports.getSamples = (req, res) => {
     repo.get({}, (err, data) => {

@@ -1,4 +1,5 @@
-var service = require('../Services/SampleService')
+var service = require('../Services/SampleService');
+var activity = require('../Services/ActivityCategoryService')
 exports.getSamples = function(req, res) {
     return service.getSamples(req, res);
 }

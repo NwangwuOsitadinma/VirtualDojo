@@ -1,0 +1,30 @@
+var repo = require('../Repositories/ActivityCategoryRepository');
+
+exports.getActivityCategories = function(req, res) {
+    repo.get({}, (err, data) => {
+        if (err) res.json({ error: err, message: 'Something went wrong and the resource could not be retrieved' });
+        res.json({ data: data, message: 'The resource was retreived successfully' });
+    });
+
+}
+
+exports.addActivityCategory = function(req, res) {
+    var data = {
+        name: req.body.name,
+        description: req.body.description
+    }
+    repo.add(data, function(err, data) {
+        if (err) return res.json({ error: err, message: 'Something went wrong and the resource could not be created' });
+        res.json({ data: data, message: 'The resource was created successfully' })
+    });
+}
+
+exports.deleteActivityCategory = function(req, res) {
+    var options = {
+        _id: req.params.id
+    }
+    repo.delete(options, function(err, data) {
+        if (err) res.json({ error: err });
+        res.json({ data: data, message: 'the resource was deleted successfully' });
+    })
+}

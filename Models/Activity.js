@@ -7,4 +7,7 @@ var ActivitySchema = mongoose.Schema({
     isActive: Boolean,
     groups: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Group' }],
 
+
 })
+
+module.exports = mongoose.model('Activity', ActivitySchema);
