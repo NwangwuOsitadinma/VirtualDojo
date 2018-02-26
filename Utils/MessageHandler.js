@@ -2,7 +2,9 @@ exports.resourceNotFound = function() {
     return 'The resource you requested was not found. Please try again'
 }
 exports.resourceFound = function() {
-    return 'The resource was retrieved successfully'
+
+    return 'The resource was retrieved successfully';
+
 }
 exports.success = function() {
     return 'The request was successful';
