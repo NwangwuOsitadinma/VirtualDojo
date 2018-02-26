@@ -1,9 +1,17 @@
 var repository = require('../Repositories/ActivityTypeRepository');
 var messageHandler = require('../Utils/MessageHandler');
-exports.getActivityType = function(req, res) {
+exports.getActivityTypes = function(req, res) {
     repository.get({}, (err, data) => {
         if (err) res.json({ err: err, message: messageHandler.resourceNotFound() });
         res.json({ data: data, message: messageHandler.resourceFound() })
+    });
+}
+
+exports.getActivityType = function(req, res) {
+    id = req.params.id;
+    repository.getById(id, function(err, data) {
+        if (err) res.json({ err: err, message: messageHandler.resourceNotFound() });
+        res.json({ data: data, message: messageHandler.resourceFound() });
     });
 }
 
