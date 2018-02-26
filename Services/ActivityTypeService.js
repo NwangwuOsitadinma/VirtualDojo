@@ -1,9 +1,9 @@
 var repository = require('../Repositories/ActivityTypeRepository');
-
+var messageHandler = require('../Utils/MessageHandler');
 exports.getActivityType = function(req, res) {
     repository.get({}, (err, data) => {
-        if (err) res.json({ err: err, message: 'something went wrong and the resource could not be found' });
-        res.json({ data: data, message: 'the resource was retreived successfully' })
+        if (err) res.json({ err: err, message: messageHandler.resourceNotFound });
+        res.json({ data: data, message: messageHandler.resourceFound })
     });
 }
 
@@ -16,8 +16,8 @@ exports.addActivityType = function(req, res) {
     }
 
     repository.add(data, function(err, data) {
-        if (err) res.json({ err: err, message: 'Something went wrong and the resource could not be created' });
-        res.json({ data: data, message: 'the resource was retrieved successfully' });
+        if (err) res.json({ err: err, message: messageHandler.failedToCreate });
+        res.json({ data: data, message: messageHandler.createSuccessful });
     });
 }
 
@@ -32,8 +32,8 @@ exports.updateActivityType = function(req, res) {
         _id: req.params.id
     }
     repository.update(data, id, function(err, data) {
-        if (err) res.json({ err: err, message: 'Something went wrong and the resource could not be updated' });
-        res.json({ data: data, message: 'the resource was updated successfully' });
+        if (err) res.json({ err: err, message: messageHandler.failedToUpdate });
+        res.json({ data: data, message: messageHandler.updateSuccessful });
     });
 }
 exports.deleteActivityCategory = function(req, res) {
@@ -41,7 +41,7 @@ exports.deleteActivityCategory = function(req, res) {
         _id: req.params.id
     }
     repository.delete(options, function(err, data) {
-        if (err) res.json({ error: err, message: 'Something went wrong and the resource could not be deleted' });
-        res.json({ data: data, message: 'the resource was deleted successfully' });
+        if (err) res.json({ error: err, message: messageHandler.failedToDelete });
+        res.json({ data: data, message: messageHandler.deleteSuccessful });
     })
 }

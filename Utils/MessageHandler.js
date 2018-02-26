@@ -27,7 +27,7 @@ exports.deleteSuccessful = function() {
     return 'The resource was deleted successfully';
 }
 
-exports.createdSuccessful = function() {
+exports.createSuccessful = function() {
     return 'The resource was created successfully';
 }
 
