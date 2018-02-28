@@ -47,8 +47,8 @@ exports.deleteActivity = function(req, res) {
     var id = {
         _id: req.params.id
     };
-    repository.delete(id, function(err, activity) {
+    repository.delete(id, function(err) {
         if (err) res.json({ err: err, message: messageHandler.failedToDelete() });
-        res.json({ data: activity, message: messageHandler.deleteSuccessful() });
+        res.json({ message: messageHandler.deleteSuccessful() });
     });
 }

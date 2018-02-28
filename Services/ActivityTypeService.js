@@ -48,8 +48,8 @@ exports.deleteActivityCategory = function(req, res) {
     var options = {
         _id: req.params.id
     }
-    repository.delete(options, function(err, data) {
+    repository.delete(options, function(err) {
         if (err) res.json({ error: err, message: messageHandler.failedToDelete() });
-        res.json({ data: data, message: messageHandler.deleteSuccessful() });
-    })
+        res.json({ message: messageHandler.deleteSuccessful() });
+    });
 }

@@ -21,7 +21,7 @@ exports.addDesignation = function(req, res) {
     });
 }
 
-exports.getDesignations = function(req, res) {
+exports.getDesignation = function(req, res) {
     id = req.params.id;
     repository.getById(id, function(err, designation) {
         if (err) res.json({ err: err, message: messageHandler.resourceNotFound() });
@@ -35,7 +35,7 @@ exports.updateDesignation = function(req, res) {
         description: req.body.description
     };
     var id = { _id: req.params.id };
-    repository.getById(id, function(err, designation) {
+    repository.update(options, id, function(err, designation) {
         if (err) res.json({ err: err, message: messageHandler.failedToUpdate() });
         res.json({ data: designation, message: messageHandler.updateSuccessful() });
     });
@@ -43,8 +43,8 @@ exports.updateDesignation = function(req, res) {
 
 exports.deleteDesignation = function(req, res) {
     var options = { _id: req.params.id };
-    repository.delete(id, function(err, designation) {
+    repository.delete(id, function(err) {
         if (err) res.json({ err: err, message: messageHandler.failedToDelete() });
-        res.json({ data: designation, message: messageHandler.deleteSuccessful() });
+        res.json({ message: messageHandler.deleteSuccessful() });
     });
 }

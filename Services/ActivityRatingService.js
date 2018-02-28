@@ -46,8 +46,8 @@ exports.deleteActivityRating = function(req, res) {
     var options = {
         _id: req.params.id
     }
-    repository.delete(options, function(err, activityRating) {
+    repository.delete(options, function(err) {
         if (err) res.json({ err: err, message: messageHandler.failedToDelete() });
-        res.json({ data: activityRating, message: messageHandler.deleteSuccessful() })
+        res.json({ message: messageHandler.deleteSuccessful() })
     });
 }

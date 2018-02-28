@@ -44,8 +44,8 @@ exports.updateActivityCategory = function(req, res) {
     var id = {
         _id: req.params.id
     }
-    repo.update(id, options, function(err, activityCategory) {
+    repo.update(id, options, function(err) {
         if (err) res.json({ err: err, message: messageHandler.failedToUpdate() })
-        res.json({ data: activityCategory, message: messageHandler.updateSuccessful() });
+        res.json({ message: messageHandler.updateSuccessful() });
     })
 }
